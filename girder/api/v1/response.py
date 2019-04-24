@@ -133,14 +133,7 @@ class ResponseItem(Resource):
                 'subject'
             )
         try:
-            applets = [
-                str(a['_id']) for a in [
-                    AppletModel().load(
-                        id=a,
-                        force=True
-                    ) for a in listFromString(applet)
-                ] if a.get('_id')
-            ]
+            applets = listFromString(applet)
         except:
             raise ValidationException(
                 'Invalid parameter',
